@@ -4,7 +4,7 @@
   "description": "A starter Node.js API server using Express, with Docker, Jest, and ESLint. All in Typescript",
   "main": "index.js",
   "engines": {
-    "node": "14.x"
+    "node" : "14.x"
   },
   "scripts": {
     "studio": "npx prisma studio",
