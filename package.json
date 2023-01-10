@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "A starter Node.js API server using Express, with Docker, Jest, and ESLint. All in Typescript",
   "main": "dist/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --name init",
-    "start": "nodemon --ignore dist/ --ignore test/ --exec ts-node --esm   ./src/app.ts",
+    "start": "node index.js",
     "start:prod": "node dist/app.js",
     "dev": "npm run build && concurrently -k \"tsc -w\" \"nodemon dist/index.js\"",
     "build": "tsc -p .",
