@@ -1,11 +1,11 @@
-import { authenticationMiddleware } from './middleware';
+import { authenticationMiddleware } from './api/middleware';
 
 const dotenv = require('dotenv');
 dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-import * as config from './config/index';
+import * as config from './api/config/index';
 const fileUpload = require('express-fileupload');
 
 
