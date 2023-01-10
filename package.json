@@ -2,7 +2,7 @@
   "name": "omronics-backend",
   "version": "1.0.0",
   "description": "A starter Node.js API server using Express, with Docker, Jest, and ESLint. All in Typescript",
-  "main": "dist/index.js",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
