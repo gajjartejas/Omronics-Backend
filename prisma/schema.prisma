@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id             Int       @id @unique @default(autoincrement())
+  username       String    @unique
+  profilePicture String?
+  email          String
+  password       String
+  lastname       String
+  firstname      String
+  isAdmin        Boolean
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @default(now()) @updatedAt
+}
+
+model Category {
+  id          Int       @id @unique @default(autoincrement())
+  name        String
+  description String?
+  parentId    Int?
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now()) @updatedAt
+  product     Product[]
+}
+
+model Product {
+  id             Int               @id @unique @default(autoincrement())
+  name           String
+  description    String?
+  partNumber     String?
+  modelNumber    String?
+  categories     Category[]
+  images         ProductImage[]
+  resourcees     ProductResource[]
+  manufacturer   Manufacturer?     @relation(fields: [manufacturerId], references: [id])
+  createdAt      DateTime?         @default(now())
+  updatedAt      DateTime?         @default(now()) @updatedAt
+  manufacturerId Int?
+}
+
+model ProductImage {
+  id        Int       @id @unique @default(autoincrement())
+  url       String?
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  products  Product[]
+}
+
+model ProductResource {
+  id          Int                 @id @unique @default(autoincrement())
+  title       String?
+  link        String?
+  description String?
+  type        ProductResourceType
+  createdAt   DateTime?           @default(now())
+  updatedAt   DateTime?           @default(now()) @updatedAt
+  products    Product[]
+}
+
+model Manufacturer {
+  id          Int       @id @unique @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now()) @updatedAt
+  products    Product[]
+}
+
+enum ProductResourceType {
+  CATALOG
+  MANUAL
+  SOFTWARE
+  DRAWING
+}
