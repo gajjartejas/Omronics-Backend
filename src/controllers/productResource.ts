@@ -60,7 +60,7 @@ export const deleteProductResource = async (req: any, res: any, next: any) => {
  */
 export const getProductResources = async (req: any, res: any, next: any) => {
   try {
-    const users = await prisma.productResource.findMany({});
+    const users = await prisma.productResource.findMany({ include: { products: true } });
     res.json(users);
   } catch (err) {
     return next(err);

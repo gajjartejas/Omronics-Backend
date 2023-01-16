@@ -65,6 +65,7 @@ export const getProducts = async (req: any, res: any, next: any) => {
         categories: true,
         resourcees: true,
         images: true,
+        manufacturer: true
       },
     });
     res.json(users);
@@ -87,6 +88,7 @@ export const getProductById = async (req: any, res: any, next: any) => {
         categories: true,
         resourcees: true,
         images: true,
+        manufacturer: true
       },
     });
     res.json(post);
