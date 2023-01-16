@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var productImageController = require("../controllers/productImage");
+var router = (0, express_1.Router)();
+router.route('/').get(productImageController.getProductImages);
+router.route('/:id').get(productImageController.getProductImageById);
+router.route('/').post(productImageController.createProductImage);
+router.route('/:id').patch(productImageController.updateProductImage);
+router.route('/:id')["delete"](productImageController.deleteProductImage);
+exports["default"] = router;
