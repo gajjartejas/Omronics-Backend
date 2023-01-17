@@ -13,7 +13,6 @@
     "test": "npm run build && jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "install": "npm i --production"
   },
   "keywords": [],
   "author": "",
