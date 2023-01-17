@@ -6,13 +6,14 @@
   "scripts": {
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --name init",
-    "start": "tsc index.ts",
+    "start": "node dist/index.js",
     "start:prod": "node dist/index.js",
     "dev": "npm run build && concurrently -k \"tsc -w\" \"nodemon dist/index.js\"",
-    "build": "npx tsc -p . && rimraf node_modules && npm i --omit=dev",
+    "build": "npx tsc -p .",
     "test": "npm run build && jest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "install": "npm i --production"
   },
   "keywords": [],
   "author": "",
