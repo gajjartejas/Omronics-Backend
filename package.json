@@ -12,7 +12,7 @@
     "build": "npx tsc -p .",
     "test": "npm run build && jest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
