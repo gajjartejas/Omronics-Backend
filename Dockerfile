@@ -6,6 +6,9 @@ FROM node:18
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
+ENV PORT 8080
+ENV HOST 0.0.0.0
+
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
 # Copying this first prevents re-running npm install on every code change.

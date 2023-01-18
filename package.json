@@ -9,7 +9,7 @@
     "start": "node dist/index.js",
     "start:prod": "node dist/index.js",
     "dev": "npm run build && concurrently -k \"tsc -w\" \"nodemon dist/index.js\"",
-    "build": "npm i && npx tsc -p . && rimraf node_modules && npm i --production",
+    "build": "npm i && npx tsc -p .",
     "test": "npm run build && jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
