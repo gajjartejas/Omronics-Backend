@@ -9,7 +9,7 @@ import * as config from './src/config/index';
 const fileUpload = require('express-fileupload');
 
 
-const port = process.env.API_PORT || 8080;
+const port = process.env.PORT || 8080;
 
 const app = express();
 app.use(express.json());
