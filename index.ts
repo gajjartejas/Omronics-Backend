@@ -8,7 +8,6 @@ import cors from 'cors';
 import * as config from './src/config/index';
 const fileUpload = require('express-fileupload');
 
-
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -41,10 +40,6 @@ app.use(authenticationMiddleware);
 // Load router paths
 config.routerConfig(app);
 
-app.listen(port, () =>
-  console.log(`
-🚀 Server ready at: http://localhost:3000
-⭐️ See sample requests: http://pris.ly/e/ts/rest-express#3-using-the-rest-api`),
-);
+app.listen(port, () => console.log(`Started at Port:${port}`));
 
 export default app;
