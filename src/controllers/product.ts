@@ -24,11 +24,12 @@ export const updateProduct = async (req: any, res: any, next: any) => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
+    console.log("data", data)
     const result = await prisma.product.update({
       where: {
         id: Number(id),
       },
-      data: data,
+      data: data
     });
     res.json(result);
   } catch (err) {
