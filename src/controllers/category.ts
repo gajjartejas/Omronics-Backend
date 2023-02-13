@@ -60,7 +60,11 @@ export const deleteCategory = async (req: any, res: any, next: any) => {
  */
 export const getCategories = async (req: any, res: any, next: any) => {
 	try {
-		const users = await prisma.category.findMany({})
+		const users = await prisma.category.findMany({
+      include:{
+        images: true
+      }
+    })
 		res.json(users)
 	} catch (err) {
 		return next(err)
@@ -77,6 +81,9 @@ export const getCategoryById = async (req: any, res: any, next: any) => {
 
 		const post = await prisma.category.findUnique({
 			where: { id: Number(id) },
+      include:{
+        images: true
+      }
 		})
 		res.json(post)
 	} catch (err) {

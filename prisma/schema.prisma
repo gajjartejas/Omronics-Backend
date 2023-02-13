@@ -33,6 +33,15 @@ model Category {
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @default(now()) @updatedAt
   product     Product[]
+  images      CategoryImage[]
+}
+
+model CategoryImage {
+  id          Int       @id @unique @default(autoincrement())
+  url         String?
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
+  categories  Category[]
 }
 
 model Product {
