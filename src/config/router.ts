@@ -7,6 +7,7 @@ import productResourceRouter from '../routes/productResource'
 import manufacturerRouter from '../routes/manufacturer'
 import userRouter from '../routes/user'
 import fileManagerRouter from '../routes/fileManager'
+import categoryImageRouter from '../routes/categoryImage'
 
 export default function (app: Express) {
 	app.use('/products', productRouter)
@@ -16,4 +17,5 @@ export default function (app: Express) {
 	app.use('/manufacturers', manufacturerRouter)
 	app.use('/users', userRouter)
 	app.use('/fileManager', fileManagerRouter)
+	app.use('/categoryImages', categoryImageRouter)
 }
