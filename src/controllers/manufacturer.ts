@@ -55,6 +55,27 @@ export const deleteManufacturer = async (req: any, res: any, next: any) => {
 }
 
 /**
+ * POST /manufacturers
+ * Delete manufacturers
+ */
+export const deleteManufacturers = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.manufacturer.deleteMany({
+      where: {
+        id: {
+          in: data
+        }
+      },
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+
+/**
  * GET /manufacturers
  * Get all manufacturers
  */

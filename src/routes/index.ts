@@ -7,6 +7,8 @@ import * as productResourceController from '../controllers/productResource';
 import * as manufacturerController from '../controllers/manufacturer';
 import * as userController from '../controllers/user';
 import * as fileManagerController from '../controllers/fileManager';
+import {deleteProducts} from '../controllers/product';
+import {deleteManufacturers} from '../controllers/manufacturer';
 
 const router = Router();
 
@@ -16,13 +18,15 @@ router.post('/', productController.createProduct);
 router.patch('/:id', productController.updateProduct);
 router.get('/:id', productController.getProductById);
 router.delete('/:id', productController.deleteProduct);
+router.post('/deleteProducts', productController.deleteProducts);
 
 //Category
 router.get('/', categoryController.getCategories);
 router.post('/', categoryController.createCategory);
 router.patch('/:id', categoryController.updateCategory);
 router.get('/:id', categoryController.getCategoryById);
-router.delete('/:id', categoryController.deleteCategory);
+router.delete('/', categoryController.deleteCategory);
+router.post('/deleteCategories', categoryController.deleteCategories);
 
 //ProductImages
 router.get('/', productImageController.getProductImages);
@@ -44,6 +48,7 @@ router.post('/', manufacturerController.createManufacturer);
 router.patch('/:id', manufacturerController.updateManufacturer);
 router.get('/:id', manufacturerController.getManufacturerById);
 router.delete('/:id', manufacturerController.deleteManufacturer);
+router.post('/deleteManufacturers', manufacturerController.deleteManufacturers);
 
 //User
 router.get('/', userController.getUsers);

@@ -55,6 +55,26 @@ export const deleteProduct = async (req: any, res: any, next: any) => {
 };
 
 /**
+ * POST /deleteProducts
+ * Delete products
+ */
+export const deleteProducts = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.product.deleteMany({
+      where: {
+        id: {
+          in: data
+        }
+      },
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
  * GET /products
  * Get all products
  */

@@ -55,6 +55,26 @@ export const deleteCategory = async (req: any, res: any, next: any) => {
 }
 
 /**
+ * POST /deleteCategories
+ * Delete categories
+ */
+export const deleteCategories = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.category.deleteMany({
+      where: {
+        id: {
+          in: data
+        }
+      },
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
  * GET /categories
  * Get all categories
  */
