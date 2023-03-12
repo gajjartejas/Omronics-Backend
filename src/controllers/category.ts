@@ -82,7 +82,7 @@ export const getCategories = async (req: any, res: any, next: any) => {
 	try {
 		const users = await prisma.category.findMany({
       include:{
-        images: true
+        images: true,
       }
     })
 		res.json(users)
@@ -98,7 +98,6 @@ export const getCategories = async (req: any, res: any, next: any) => {
 export const getCategoryById = async (req: any, res: any, next: any) => {
 	try {
 		const { id }: { id?: string } = req.params
-
 		const post = await prisma.category.findUnique({
 			where: { id: Number(id) },
       include:{
@@ -109,4 +108,44 @@ export const getCategoryById = async (req: any, res: any, next: any) => {
 	} catch (err) {
 		return next(err)
 	}
+}
+
+/**
+ * GET /childCategories/:id
+ * Get category by id
+ */
+export const getChildCategoriesById = async (req: any, res: any, next: any) => {
+  try {
+    const { id }: { id?: string } = req.params
+    const post = await prisma.category.findMany({
+      where: {  parentId: Number(id) },
+      orderBy: { id: 'asc' },
+      include:{
+        images: true,
+      }
+    })
+    res.json(post)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
+ * GET /:id/products
+ * Get category by id
+ */
+export const getProductsByCategoryId = async (req: any, res: any, next: any) => {
+  try {
+    const { id }: { id?: string } = req.params
+    const post = await prisma.category.findUnique({
+      where: { id: Number(id) },
+      include:{
+        images: true,
+        product: true
+      }
+    })
+    res.json(post)
+  } catch (err) {
+    return next(err)
+  }
 }

@@ -7,8 +7,7 @@ import * as productResourceController from '../controllers/productResource';
 import * as manufacturerController from '../controllers/manufacturer';
 import * as userController from '../controllers/user';
 import * as fileManagerController from '../controllers/fileManager';
-import {deleteProducts} from '../controllers/product';
-import {deleteManufacturers} from '../controllers/manufacturer';
+import * as contactDataController from '../controllers/contactData';
 
 const router = Router();
 
@@ -25,6 +24,8 @@ router.get('/', categoryController.getCategories);
 router.post('/', categoryController.createCategory);
 router.patch('/:id', categoryController.updateCategory);
 router.get('/:id', categoryController.getCategoryById);
+router.get('/children/:id', categoryController.getChildCategoriesById);
+router.get('/:id/products', categoryController.getProductsByCategoryId);
 router.delete('/', categoryController.deleteCategory);
 router.post('/deleteCategories', categoryController.deleteCategories);
 
@@ -61,5 +62,13 @@ router.post('/login', userController.login);
 //FileManager
 router.post('/', fileManagerController.uploadFile);
 router.delete('/:id', fileManagerController.deleteFile);
+
+//Contact Data
+router.get('/', contactDataController.getContactDatum);
+router.post('/', contactDataController.createContactData);
+router.patch('/:id', contactDataController.updateContactData);
+router.get('/:id', contactDataController.getContactDataById);
+router.delete('/', contactDataController.deleteContactData);
+router.post('/deleteContactDatum', contactDataController.deleteContactDatum);
 
 export default router;

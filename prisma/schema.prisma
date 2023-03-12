@@ -87,6 +87,16 @@ model Manufacturer {
   products    Product[]
 }
 
+model ContactData {
+  id             Int       @id @unique @default(autoincrement())
+  name           String
+  phoneNo        String?
+  email          String?
+  requirements   String
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @default(now()) @updatedAt
+}
+
 enum ProductResourceType {
   CATALOG
   MANUAL

@@ -8,6 +8,7 @@ import manufacturerRouter from '../routes/manufacturer'
 import userRouter from '../routes/user'
 import fileManagerRouter from '../routes/fileManager'
 import categoryImageRouter from '../routes/categoryImage'
+import contactDataRouter from '../routes/contactData'
 
 export default function (app: Express) {
 	app.use('/products', productRouter)
@@ -18,4 +19,5 @@ export default function (app: Express) {
 	app.use('/users', userRouter)
 	app.use('/fileManager', fileManagerRouter)
 	app.use('/categoryImages', categoryImageRouter)
+	app.use('/contactDatum', contactDataRouter)
 }
