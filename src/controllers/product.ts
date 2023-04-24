@@ -116,3 +116,49 @@ export const getProductById = async (req: any, res: any, next: any) => {
     return next(err);
   }
 };
+
+/**
+ * POST /addFeaturedProducts
+ * Add Featured Products
+ */
+export const addFeaturedProducts = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.product.updateMany({
+      data: {
+        featured: true
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
+ * POST /removeFeaturedProducts
+ * Remove Featured Products
+ */
+export const removeFeaturedProducts = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.product.updateMany({
+      data: {
+        featured: false
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}

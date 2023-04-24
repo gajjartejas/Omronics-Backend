@@ -30,10 +30,12 @@ model Category {
   name        String
   description String?
   parentId    Int?
-  createdAt   DateTime? @default(now())
-  updatedAt   DateTime? @default(now()) @updatedAt
   product     Product[]
   images      CategoryImage[]
+  featured    Boolean   @default(false)
+  active      Boolean   @default(true)
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now()) @updatedAt
 }
 
 model CategoryImage {
@@ -54,6 +56,8 @@ model Product {
   images         ProductImage[]
   resourcees     ProductResource[]
   manufacturer   Manufacturer?     @relation(fields: [manufacturerId], references: [id])
+  featured       Boolean           @default(false)
+  active         Boolean           @default(true)
   createdAt      DateTime?         @default(now())
   updatedAt      DateTime?         @default(now()) @updatedAt
   manufacturerId Int?
@@ -82,6 +86,8 @@ model Manufacturer {
   id          Int       @id @unique @default(autoincrement())
   name        String
   description String?
+  featured    Boolean   @default(false)
+  active      Boolean   @default(true)
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @default(now()) @updatedAt
   products    Product[]
