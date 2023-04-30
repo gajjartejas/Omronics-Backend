@@ -8,6 +8,8 @@ import * as manufacturerController from '../controllers/manufacturer';
 import * as userController from '../controllers/user';
 import * as fileManagerController from '../controllers/fileManager';
 import * as contactDataController from '../controllers/contactData';
+import * as coverImageController from '../controllers/coverImage';
+import * as staticPageDataController from '../controllers/staticPageData';
 
 const router = Router();
 
@@ -18,6 +20,8 @@ router.patch('/:id', productController.updateProduct);
 router.get('/:id', productController.getProductById);
 router.delete('/:id', productController.deleteProduct);
 router.post('/deleteProducts', productController.deleteProducts);
+router.post('/addFeaturedProducts', productController.addFeaturedProducts);
+router.post('/removeFeaturedProducts', productController.removeFeaturedProducts);
 
 //Category
 router.get('/', categoryController.getCategories);
@@ -28,6 +32,8 @@ router.get('/children/:id', categoryController.getChildCategoriesById);
 router.get('/:id/products', categoryController.getProductsByCategoryId);
 router.delete('/', categoryController.deleteCategory);
 router.post('/deleteCategories', categoryController.deleteCategories);
+router.post('/addFeaturedCategories', categoryController.addFeaturedCategories);
+router.post('/removeFeaturedCategories', categoryController.removeFeaturedCategories);
 
 //ProductImages
 router.get('/', productImageController.getProductImages);
@@ -50,6 +56,8 @@ router.patch('/:id', manufacturerController.updateManufacturer);
 router.get('/:id', manufacturerController.getManufacturerById);
 router.delete('/:id', manufacturerController.deleteManufacturer);
 router.post('/deleteManufacturers', manufacturerController.deleteManufacturers);
+router.post('/addFeaturedManufacturers', manufacturerController.addFeaturedManufacturers);
+router.post('/removeFeaturedManufacturers', manufacturerController.removeFeaturedManufacturers);
 
 //User
 router.get('/', userController.getUsers);
@@ -70,5 +78,20 @@ router.patch('/:id', contactDataController.updateContactData);
 router.get('/:id', contactDataController.getContactDataById);
 router.delete('/', contactDataController.deleteContactData);
 router.post('/deleteContactDatum', contactDataController.deleteContactDatum);
+
+//Cover Image
+router.get('/', coverImageController.getCoverImages);
+router.post('/', coverImageController.createCoverImage);
+router.patch('/:id', coverImageController.updateCoverImage);
+router.get('/:id', coverImageController.getCoverImageById);
+router.delete('/', coverImageController.deleteCoverImage);
+router.post('/deleteContactDatum', coverImageController.deleteCoverImages);
+
+//Static Page
+router.get('/', staticPageDataController.getStaticPageDatum);
+router.post('/', staticPageDataController.createStaticPageData);
+router.patch('/:id', staticPageDataController.updateStaticPageData);
+router.get('/:id', staticPageDataController.getStaticPageDataById);
+router.delete('/', staticPageDataController.deleteStaticPageData);
 
 export default router;

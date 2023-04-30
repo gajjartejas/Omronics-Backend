@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `CoverImage` ADD COLUMN `url` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `StaticPageData` MODIFY `type` ENUM('ABOUT', 'CONTACT_US', 'SERVICE', 'BANNER', 'FOOTER') NOT NULL;

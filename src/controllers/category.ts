@@ -149,3 +149,50 @@ export const getProductsByCategoryId = async (req: any, res: any, next: any) => 
     return next(err)
   }
 }
+
+
+/**
+ * POST /addFeaturedCategories
+ * Add Featured Categories
+ */
+export const addFeaturedCategories = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.category.updateMany({
+      data: {
+        featured: true
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
+ * POST /removeFeaturedProducts
+ * Remove Featured Categories
+ */
+export const removeFeaturedCategories = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.category.updateMany({
+      data: {
+        featured: false
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}

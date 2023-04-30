@@ -104,3 +104,49 @@ export const getManufacturerById = async (req: any, res: any, next: any) => {
 		return next(err)
 	}
 }
+
+/**
+ * POST /addFeaturedManufacturers
+ * Add Featured Manufacturers
+ */
+export const addFeaturedManufacturers = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.manufacturer.updateMany({
+      data: {
+        featured: true
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}
+
+/**
+ * POST /removeFeaturedManufacturers
+ * Remove Featured Manufacturers
+ */
+export const removeFeaturedManufacturers = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+    const result = await prisma.manufacturer.updateMany({
+      data: {
+        featured: false
+      },
+      where: {
+        id: {
+          in: data
+        }
+      }
+    })
+    res.json( result)
+  } catch (err) {
+    return next(err)
+  }
+}

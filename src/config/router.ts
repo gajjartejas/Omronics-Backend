@@ -9,6 +9,8 @@ import userRouter from '../routes/user'
 import fileManagerRouter from '../routes/fileManager'
 import categoryImageRouter from '../routes/categoryImage'
 import contactDataRouter from '../routes/contactData'
+import coverImageRouter from '../routes/coverImage'
+import staticPageDataRouter from '../routes/staticPageData'
 
 export default function (app: Express) {
 	app.use('/products', productRouter)
@@ -20,4 +22,6 @@ export default function (app: Express) {
 	app.use('/fileManager', fileManagerRouter)
 	app.use('/categoryImages', categoryImageRouter)
 	app.use('/contactDatum', contactDataRouter)
+	app.use('/coverImages', coverImageRouter)
+	app.use('/staticPage', staticPageDataRouter)
 }

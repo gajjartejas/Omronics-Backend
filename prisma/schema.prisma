@@ -103,6 +103,63 @@ model ContactData {
   updatedAt      DateTime? @default(now()) @updatedAt
 }
 
+model CoverImage {
+  id             Int       @id @unique @default(autoincrement())
+  title          String
+  description    String?
+  url            String?
+  active         Boolean   @default(true)
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @default(now()) @updatedAt
+}
+
+
+model StaticPageData {
+  id             Int       @id @unique @default(autoincrement())
+  data           String
+  type           StaticPageType
+  subType        StaticPageSubDataType
+  dataType       StaticPageDataType
+  active         Boolean   @default(true)
+  createdAt      DateTime? @default(now())
+  updatedAt      DateTime? @default(now()) @updatedAt
+}
+
+enum StaticPageType {
+  ABOUT
+  CONTACT_US
+  SERVICE
+  BANNER
+  FOOTER
+}
+
+enum StaticPageSubDataType {
+  HEAD_QUARTER
+  GET_IN_TOUCH_1
+  GET_IN_TOUCH_2
+  MAP
+  BODY
+  SOCIAL
+}
+
+enum StaticPageDataType {
+  HTML_TEXT
+
+  TWITTER
+  FACEBOOK
+  INSTAGRAM
+  YOUTUBE
+
+  NAME
+  ADDRESS
+  EMAIL
+  PHONE
+
+  LINK
+
+  OTHER
+}
+
 enum ProductResourceType {
   CATALOG
   MANUAL
