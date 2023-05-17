@@ -28,7 +28,7 @@ export const updateStaticPageData = async (req: any, res: any, next: any) => {
       where: {
         id: Number(id),
       },
-      data: data,
+      data: {data},
     });
     res.json(result);
   } catch (err) {
@@ -79,6 +79,50 @@ export const getStaticPageDataById = async (req: any, res: any, next: any) => {
       where: { id: Number(id) },
     });
     res.json(post);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+
+/**
+ * GET /getStaticPageDatumByIds
+ * Get static page data by ids
+ */
+export const getStaticPageDatumByIds = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body
+
+    const users = await prisma.staticPageData.findMany({
+      where: {
+        id: {
+          in: data.map((v: any) => Number(v))
+        }
+      },
+    });
+    res.json(users);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+/**
+ * POST /staticPageDatum
+ * Update datum
+ */
+export const updateStaticPageDatum = async (req: any, res: any, next: any) => {
+  try {
+    const { data } = req.body;
+
+    const transaction = await prisma.$transaction(
+      data.map((d: any) =>
+        prisma.staticPageData.update({
+          where: { id: parseInt(d.id) },
+          data: {data: d.data},
+        })
+      )
+    );
+    return res.json(transaction);
   } catch (err) {
     return next(err);
   }

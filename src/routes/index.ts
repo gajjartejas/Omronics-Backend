@@ -5,11 +5,13 @@ import * as categoryController from '../controllers/category';
 import * as productImageController from '../controllers/productImage';
 import * as productResourceController from '../controllers/productResource';
 import * as manufacturerController from '../controllers/manufacturer';
+import * as manufacturerImageController from '../controllers/manufacturerImage';
 import * as userController from '../controllers/user';
 import * as fileManagerController from '../controllers/fileManager';
 import * as contactDataController from '../controllers/contactData';
 import * as coverImageController from '../controllers/coverImage';
 import * as staticPageDataController from '../controllers/staticPageData';
+import * as frontendDataController from '../controllers/frontendData';
 
 const router = Router();
 
@@ -59,6 +61,14 @@ router.post('/deleteManufacturers', manufacturerController.deleteManufacturers);
 router.post('/addFeaturedManufacturers', manufacturerController.addFeaturedManufacturers);
 router.post('/removeFeaturedManufacturers', manufacturerController.removeFeaturedManufacturers);
 
+//Manufacturer Image
+router.get('/', manufacturerImageController.getManufacturerImages);
+router.post('/', manufacturerImageController.createManufacturerImage);
+router.patch('/:id', manufacturerImageController.updateManufacturerImage);
+router.get('/:id', manufacturerImageController.getManufacturerImageById);
+router.delete('/', manufacturerImageController.deleteManufacturerImage);
+router.post('/deleteContactDatum', manufacturerImageController.deleteManufacturerImage);
+
 //User
 router.get('/', userController.getUsers);
 router.post('/', userController.createUser);
@@ -93,5 +103,10 @@ router.post('/', staticPageDataController.createStaticPageData);
 router.patch('/:id', staticPageDataController.updateStaticPageData);
 router.get('/:id', staticPageDataController.getStaticPageDataById);
 router.delete('/', staticPageDataController.deleteStaticPageData);
+router.post('/getStaticPageDatumByIds', staticPageDataController.getStaticPageDatumByIds);
+router.post('/updateStaticPageDatum', staticPageDataController.updateStaticPageDatum);
+
+//Frontend Data
+router.get('/', frontendDataController.getFrontendDatum);
 
 export default router;

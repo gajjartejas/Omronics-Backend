@@ -1,27 +1,31 @@
-import { Express } from 'express'
+import { Express } from 'express';
 
-import productRouter from '../routes/product'
-import categoryRouter from '../routes/category'
-import productImageRouter from '../routes/productImage'
-import productResourceRouter from '../routes/productResource'
-import manufacturerRouter from '../routes/manufacturer'
-import userRouter from '../routes/user'
-import fileManagerRouter from '../routes/fileManager'
-import categoryImageRouter from '../routes/categoryImage'
-import contactDataRouter from '../routes/contactData'
-import coverImageRouter from '../routes/coverImage'
-import staticPageDataRouter from '../routes/staticPageData'
+import productRouter from '../routes/product';
+import categoryRouter from '../routes/category';
+import productImageRouter from '../routes/productImage';
+import productResourceRouter from '../routes/productResource';
+import manufacturerRouter from '../routes/manufacturer';
+import manufacturerImageRouter from '../routes/manufacturerImage';
+import userRouter from '../routes/user';
+import fileManagerRouter from '../routes/fileManager';
+import categoryImageRouter from '../routes/categoryImage';
+import contactDataRouter from '../routes/contactData';
+import coverImageRouter from '../routes/coverImage';
+import staticPageDataRouter from '../routes/staticPageData';
+import frontendDataRouter from '../routes/frontendData';
 
 export default function (app: Express) {
-	app.use('/products', productRouter)
-	app.use('/categories', categoryRouter)
-	app.use('/productImages', productImageRouter)
-	app.use('/productResources', productResourceRouter)
-	app.use('/manufacturers', manufacturerRouter)
-	app.use('/users', userRouter)
-	app.use('/fileManager', fileManagerRouter)
-	app.use('/categoryImages', categoryImageRouter)
-	app.use('/contactDatum', contactDataRouter)
-	app.use('/coverImages', coverImageRouter)
-	app.use('/staticPage', staticPageDataRouter)
+  app.use('/products', productRouter);
+  app.use('/categories', categoryRouter);
+  app.use('/productImages', productImageRouter);
+  app.use('/productResources', productResourceRouter);
+  app.use('/manufacturers', manufacturerRouter);
+  app.use('/manufacturerImages', manufacturerImageRouter);
+  app.use('/users', userRouter);
+  app.use('/fileManager', fileManagerRouter);
+  app.use('/categoryImages', categoryImageRouter);
+  app.use('/contactDatum', contactDataRouter);
+  app.use('/coverImages', coverImageRouter);
+  app.use('/staticPageDatum', staticPageDataRouter);
+  app.use('/frontendData', frontendDataRouter);
 }

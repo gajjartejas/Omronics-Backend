@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-var fs = require('fs');
+const fs = require('fs');
 
 const ROOT_FOLDER = '/Users/tejas/Desktop/uploads';
 
@@ -14,7 +14,7 @@ export const uploadFile = async (req: any, res: any, next: any) => {
     if (!req.files.file && !req.files.image) {
       return res.send('No files provided!');
     }
-    
+
     if (Array.isArray(req.files.file) || Array.isArray(req.files.image)) {
       return res.send('Multiple files no supported!');
     }

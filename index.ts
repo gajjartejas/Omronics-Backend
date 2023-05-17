@@ -1,4 +1,4 @@
-import { authenticationMiddleware } from './src/middleware';
+import AppMiddleware from './src/middleware';
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -6,6 +6,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import * as config from './src/config/index';
+import prisma from './src/libs/prismaClient'
 const fileUpload = require('express-fileupload');
 
 const port = process.env.PORT || 8080;
@@ -35,7 +36,7 @@ app.use(function (req, res, next) {
 });
 
 // Custom middleware list
-app.use(authenticationMiddleware);
+app.use(AppMiddleware.authenticationMiddleware);
 
 // Load router paths
 config.routerConfig(app);

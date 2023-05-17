@@ -26,30 +26,30 @@ model User {
 }
 
 model Category {
-  id          Int       @id @unique @default(autoincrement())
-  name        String
-  description String?
+  id          Int             @id @unique @default(autoincrement())
+  name        String          @db.VarChar(200)
+  description String?         @db.VarChar(5000)
   parentId    Int?
   product     Product[]
   images      CategoryImage[]
-  featured    Boolean   @default(false)
-  active      Boolean   @default(true)
-  createdAt   DateTime? @default(now())
-  updatedAt   DateTime? @default(now()) @updatedAt
+  featured    Boolean         @default(false)
+  active      Boolean         @default(true)
+  createdAt   DateTime?       @default(now())
+  updatedAt   DateTime?       @default(now()) @updatedAt
 }
 
 model CategoryImage {
-  id          Int       @id @unique @default(autoincrement())
-  url         String?
-  createdAt   DateTime? @default(now())
-  updatedAt   DateTime? @updatedAt
-  categories  Category[]
+  id         Int        @id @unique @default(autoincrement())
+  url        String?
+  createdAt  DateTime?  @default(now())
+  updatedAt  DateTime?  @updatedAt
+  categories Category[]
 }
 
 model Product {
   id             Int               @id @unique @default(autoincrement())
-  name           String
-  description    String?
+  name           String            @db.VarChar(200)
+  description    String?           @db.VarChar(5000)
   partNumber     String?
   modelNumber    String?
   categories     Category[]
@@ -73,9 +73,9 @@ model ProductImage {
 
 model ProductResource {
   id          Int                 @id @unique @default(autoincrement())
-  title       String?
-  link        String?
-  description String?
+  title       String?             @db.VarChar(200)
+  link        String?             @db.VarChar(200)
+  description String?             @db.VarChar(5000)
   type        ProductResourceType
   createdAt   DateTime?           @default(now())
   updatedAt   DateTime?           @default(now()) @updatedAt
@@ -83,46 +83,54 @@ model ProductResource {
 }
 
 model Manufacturer {
-  id          Int       @id @unique @default(autoincrement())
-  name        String
-  description String?
-  featured    Boolean   @default(false)
-  active      Boolean   @default(true)
-  createdAt   DateTime? @default(now())
-  updatedAt   DateTime? @default(now()) @updatedAt
+  id          Int                 @id @unique @default(autoincrement())
+  name        String              @db.VarChar(200)
+  description String?             @db.VarChar(5000)
+  images      ManufacturerImage[]
+  featured    Boolean             @default(false)
+  active      Boolean             @default(true)
+  createdAt   DateTime?           @default(now())
+  updatedAt   DateTime?           @default(now()) @updatedAt
   products    Product[]
 }
 
+model ManufacturerImage {
+  id            Int            @id @unique @default(autoincrement())
+  url           String?
+  createdAt     DateTime?      @default(now())
+  updatedAt     DateTime?      @updatedAt
+  manufacturers Manufacturer[]
+}
+
 model ContactData {
-  id             Int       @id @unique @default(autoincrement())
-  name           String
-  phoneNo        String?
-  email          String?
-  requirements   String
-  createdAt      DateTime? @default(now())
-  updatedAt      DateTime? @default(now()) @updatedAt
+  id           Int       @id @unique @default(autoincrement())
+  name         String    @db.VarChar(200)
+  phoneNo      String?
+  email        String?
+  requirements String    @db.VarChar(5000)
+  createdAt    DateTime? @default(now())
+  updatedAt    DateTime? @default(now()) @updatedAt
 }
 
 model CoverImage {
-  id             Int       @id @unique @default(autoincrement())
-  title          String
-  description    String?
-  url            String?
-  active         Boolean   @default(true)
-  createdAt      DateTime? @default(now())
-  updatedAt      DateTime? @default(now()) @updatedAt
+  id          Int       @id @unique @default(autoincrement())
+  title       String    @db.VarChar(200)
+  description String?   @db.VarChar(5000)
+  url         String?
+  active      Boolean   @default(true)
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now()) @updatedAt
 }
 
-
 model StaticPageData {
-  id             Int       @id @unique @default(autoincrement())
-  data           String
-  type           StaticPageType
-  subType        StaticPageSubDataType
-  dataType       StaticPageDataType
-  active         Boolean   @default(true)
-  createdAt      DateTime? @default(now())
-  updatedAt      DateTime? @default(now()) @updatedAt
+  id        Int                   @id @unique @default(autoincrement())
+  data      String                @db.VarChar(5000)
+  type      StaticPageType
+  subType   StaticPageSubDataType
+  dataType  StaticPageDataType
+  active    Boolean               @default(true)
+  createdAt DateTime?             @default(now())
+  updatedAt DateTime?             @default(now()) @updatedAt
 }
 
 enum StaticPageType {
