@@ -61,7 +61,7 @@ export const deleteCategoryImage = async (req: any, res: any, next: any) => {
 export const getCategoryImages = async (req: any, res: any, next: any) => {
   try {
     const users = await prisma.categoryImage.findMany({
-      include: { categories: true},
+      include: { categories: true },
     });
     res.json(users);
   } catch (err) {
