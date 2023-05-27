@@ -60,6 +60,7 @@ router.delete('/:id', manufacturerController.deleteManufacturer);
 router.post('/deleteManufacturers', manufacturerController.deleteManufacturers);
 router.post('/addFeaturedManufacturers', manufacturerController.addFeaturedManufacturers);
 router.post('/removeFeaturedManufacturers', manufacturerController.removeFeaturedManufacturers);
+router.get('/:id/products', manufacturerController.getProductsByManufacturerId);
 
 //Manufacturer Image
 router.get('/', manufacturerImageController.getManufacturerImages);

@@ -156,3 +156,28 @@ export const removeFeaturedManufacturers = async (req: any, res: any, next: any)
     return next(err);
   }
 };
+
+/**
+ * GET /getProductsByManufacturerId/:id
+ * Get getProductsByManufacturerId by id
+ */
+export const getProductsByManufacturerId = async (req: any, res: any, next: any) => {
+  try {
+    const { id }: { id?: string } = req.params;
+
+    const post = await prisma.manufacturer.findUnique({
+      where: { id: Number(id) },
+      include: {
+        images: true,
+        products: {
+          include: {
+            images: true,
+          },
+        },
+      },
+    });
+    res.json(post);
+  } catch (err) {
+    return next(err);
+  }
+};
