@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /staticPageData
@@ -28,7 +28,7 @@ export const updateStaticPageData = async (req: any, res: any, next: any) => {
       where: {
         id: Number(id),
       },
-      data: {data},
+      data: { data },
     });
     res.json(result);
   } catch (err) {
@@ -58,7 +58,7 @@ export const deleteStaticPageData = async (req: any, res: any, next: any) => {
  * GET /getStaticPageDatum
  * Get all static page data
  */
-export const getStaticPageDatum = async (req: any, res: any, next: any) => {
+export const getStaticPageDatum = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.staticPageData.findMany();
     res.json(users);
@@ -84,20 +84,19 @@ export const getStaticPageDataById = async (req: any, res: any, next: any) => {
   }
 };
 
-
 /**
  * GET /getStaticPageDatumByIds
  * Get static page data by ids
  */
 export const getStaticPageDatumByIds = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
 
     const users = await prisma.staticPageData.findMany({
       where: {
         id: {
-          in: data.map((v: any) => Number(v))
-        }
+          in: data.map((v: any) => Number(v)),
+        },
       },
     });
     res.json(users);
@@ -118,9 +117,9 @@ export const updateStaticPageDatum = async (req: any, res: any, next: any) => {
       data.map((d: any) =>
         prisma.staticPageData.update({
           where: { id: parseInt(d.id) },
-          data: {data: d.data},
-        })
-      )
+          data: { data: d.data },
+        }),
+      ),
     );
     return res.json(transaction);
   } catch (err) {

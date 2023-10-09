@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as fileManagerController from '../controllers/fileManager';
+import * as fileManagerController from '../controllers/fileManager.js';
 
 const router = Router();
 

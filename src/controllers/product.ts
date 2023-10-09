@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /products
@@ -28,7 +28,7 @@ export const updateProduct = async (req: any, res: any, next: any) => {
       where: {
         id: Number(id),
       },
-      data: data
+      data: data,
     });
     res.json(result);
   } catch (err) {
@@ -60,32 +60,32 @@ export const deleteProduct = async (req: any, res: any, next: any) => {
  */
 export const deleteProducts = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
     const result = await prisma.product.deleteMany({
       where: {
         id: {
-          in: data
-        }
+          in: data,
+        },
       },
-    })
-    res.json( result)
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * GET /products
  * Get all products
  */
-export const getProducts = async (req: any, res: any, next: any) => {
+export const getProducts = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.product.findMany({
       include: {
         categories: true,
         resourcees: true,
         images: true,
-        manufacturer: true
+        manufacturer: true,
       },
     });
     res.json(users);
@@ -108,7 +108,7 @@ export const getProductById = async (req: any, res: any, next: any) => {
         categories: true,
         resourcees: true,
         images: true,
-        manufacturer: true
+        manufacturer: true,
       },
     });
     res.json(post);
@@ -123,22 +123,22 @@ export const getProductById = async (req: any, res: any, next: any) => {
  */
 export const addFeaturedProducts = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
     const result = await prisma.product.updateMany({
       data: {
-        featured: true
+        featured: true,
       },
       where: {
         id: {
-          in: data
-        }
-      }
-    })
-    res.json( result)
+          in: data,
+        },
+      },
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * POST /removeFeaturedProducts
@@ -146,19 +146,19 @@ export const addFeaturedProducts = async (req: any, res: any, next: any) => {
  */
 export const removeFeaturedProducts = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
     const result = await prisma.product.updateMany({
       data: {
-        featured: false
+        featured: false,
       },
       where: {
         id: {
-          in: data
-        }
-      }
-    })
-    res.json( result)
+          in: data,
+        },
+      },
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};

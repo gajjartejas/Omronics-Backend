@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient'
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /coverImages
@@ -6,15 +6,15 @@ import prisma from '../libs/prismaClient'
  */
 export const createCoverImage = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
     const result = await prisma.coverImage.create({
       data: data,
-    })
-    res.json(result)
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * PATCH /coverImages
@@ -22,19 +22,19 @@ export const createCoverImage = async (req: any, res: any, next: any) => {
  */
 export const updateCoverImage = async (req: any, res: any, next: any) => {
   try {
-    const { id }: { id?: string } = req.params
-    const { data } = req.body
+    const { id }: { id?: string } = req.params;
+    const { data } = req.body;
     const result = await prisma.coverImage.update({
       where: {
         id: Number(id),
       },
       data: data,
-    })
-    res.json(result)
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * DELETE /coverImages
@@ -42,17 +42,17 @@ export const updateCoverImage = async (req: any, res: any, next: any) => {
  */
 export const deleteCoverImage = async (req: any, res: any, next: any) => {
   try {
-    const { id }: { id?: string } = req.params
+    const { id }: { id?: string } = req.params;
     const result = await prisma.coverImage.delete({
       where: {
         id: Number(id),
       },
-    })
-    res.json( result)
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * POST /deleteCoverImages
@@ -60,33 +60,32 @@ export const deleteCoverImage = async (req: any, res: any, next: any) => {
  */
 export const deleteCoverImages = async (req: any, res: any, next: any) => {
   try {
-    const { data } = req.body
+    const { data } = req.body;
     const result = await prisma.coverImage.deleteMany({
       where: {
         id: {
-          in: data
-        }
+          in: data,
+        },
       },
-    })
-    res.json( result)
+    });
+    res.json(result);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * GET /coverImage
  * Get all coverImages
  */
-export const getCoverImages = async (req: any, res: any, next: any) => {
+export const getCoverImages = async (_req: any, res: any, next: any) => {
   try {
-    const users = await prisma.coverImage.findMany({
-    })
-    res.json(users)
+    const users = await prisma.coverImage.findMany({});
+    res.json(users);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};
 
 /**
  * GET /coverImages/:id
@@ -94,13 +93,13 @@ export const getCoverImages = async (req: any, res: any, next: any) => {
  */
 export const getCoverImageById = async (req: any, res: any, next: any) => {
   try {
-    const { id }: { id?: string } = req.params
+    const { id }: { id?: string } = req.params;
 
     const post = await prisma.coverImage.findUnique({
       where: { id: Number(id) },
-    })
-    res.json(post)
+    });
+    res.json(post);
   } catch (err) {
-    return next(err)
+    return next(err);
   }
-}
+};

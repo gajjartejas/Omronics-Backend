@@ -1,13 +1,13 @@
-import AppMiddleware from './src/middleware';
-
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
 import cors from 'cors';
-import * as config from './src/config/index';
-const cookieParser = require('cookie-parser');
-const fileUpload = require('express-fileupload');
+import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
+
+import * as config from './src/config/index.js';
+import AppMiddleware from './src/middleware/index.js';
 
 const port = process.env.PORT || 8080;
 const env = process.env.NODE_ENV || 'development';
@@ -29,7 +29,7 @@ app.use(
 );
 
 app.use(cors({ credentials: true, origin: FRONT_END_URL }));
-app.use(function (req, res, next) {
+app.use(function (_req, res, next) {
   res.header('Access-Control-Allow-Origin', FRONT_END_URL);
   next();
 });

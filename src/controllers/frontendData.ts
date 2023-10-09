@@ -1,10 +1,10 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * GET /getStaticPageDatum
  * Get all static page data
  */
-export const getFrontendDatum = async (req: any, res: any, next: any) => {
+export const getFrontendDatum = async (_req: any, res: any, next: any) => {
   try {
     const staticPageData = await prisma.staticPageData.findMany();
     const featuredCategories = await prisma.category.findMany({

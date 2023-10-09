@@ -1,6 +1,6 @@
-import prisma from '../libs/prismaClient';
-const bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
+import prisma from '../libs/prismaClient.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 /**
  * POST /users
@@ -81,7 +81,7 @@ export const deleteUser = async (req: any, res: any, next: any) => {
  * GET /users
  * Get all users
  */
-export const getUsers = async (req: any, res: any, next: any) => {
+export const getUsers = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.user.findMany({});
     res.json(users);
