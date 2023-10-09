@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as manufacturerController from '../controllers/manufacturer';
+import * as manufacturerController from '../controllers/manufacturer.js';
 
 const router = Router();
 

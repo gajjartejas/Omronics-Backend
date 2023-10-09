@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /categories
@@ -78,7 +78,7 @@ export const deleteCategories = async (req: any, res: any, next: any) => {
  * GET /categories
  * Get all categories
  */
-export const getCategories = async (req: any, res: any, next: any) => {
+export const getCategories = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.category.findMany({
       include: {
@@ -143,8 +143,8 @@ export const getProductsByCategoryId = async (req: any, res: any, next: any) => 
         images: true,
         product: {
           include: {
-            images: true
-          }
+            images: true,
+          },
         },
       },
     });

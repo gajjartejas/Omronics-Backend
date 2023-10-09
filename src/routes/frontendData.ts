@@ -1,9 +1,9 @@
-import {Router} from 'express'
+import { Router } from 'express';
 
-import * as frontendDataController from '../controllers/frontendData'
+import * as frontendDataController from '../controllers/frontendData.js';
 
-const router = Router()
+const router = Router();
 
-router.route('/').get(frontendDataController.getFrontendDatum)
+router.route('/').get(frontendDataController.getFrontendDatum);
 
-export default router
+export default router;

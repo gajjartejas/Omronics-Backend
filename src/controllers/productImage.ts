@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /productImages
@@ -58,7 +58,7 @@ export const deleteProductImage = async (req: any, res: any, next: any) => {
  * GET /productImages
  * Get all productImages
  */
-export const getProductImages = async (req: any, res: any, next: any) => {
+export const getProductImages = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.productImage.findMany({
       include: { products: true },

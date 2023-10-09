@@ -1,4 +1,4 @@
-var jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 function authenticateToken(req: any, res: any, next: any) {
   //return next();

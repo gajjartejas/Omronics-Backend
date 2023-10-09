@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /productResources
@@ -58,7 +58,7 @@ export const deleteProductResource = async (req: any, res: any, next: any) => {
  * GET /productResources
  * Get all productResources
  */
-export const getProductResources = async (req: any, res: any, next: any) => {
+export const getProductResources = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.productResource.findMany({ include: { products: true } });
     res.json(users);

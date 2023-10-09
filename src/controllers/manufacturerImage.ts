@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /ManufacturerImages
@@ -58,7 +58,7 @@ export const deleteManufacturerImage = async (req: any, res: any, next: any) => 
  * GET /ManufacturerImages
  * Get all ManufacturerImages
  */
-export const getManufacturerImages = async (req: any, res: any, next: any) => {
+export const getManufacturerImages = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.manufacturerImage.findMany({
       include: { manufacturers: true },

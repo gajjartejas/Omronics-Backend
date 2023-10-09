@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as manufacturerImageController from '../controllers/manufacturerImage';
+import * as manufacturerImageController from '../controllers/manufacturerImage.js';
 
 const router = Router();
 

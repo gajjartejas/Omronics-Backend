@@ -1,3 +1,3 @@
-import routerConfig from './router'
+import routerConfig from './router.js'
 
 export { routerConfig }

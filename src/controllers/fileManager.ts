@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-const fs = require('fs');
+import fs from 'fs';
 
 const ROOT_FOLDER = '/Users/tejas/Desktop/uploads';
 

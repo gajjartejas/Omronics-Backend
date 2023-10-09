@@ -1,13 +1,13 @@
-import { Router } from 'express'
+import { Router } from 'express';
 
-import * as CategoryImageController from '../controllers/categoryImage'
+import * as CategoryImageController from '../controllers/categoryImage.js';
 
-const router = Router()
+const router = Router();
 
-router.route('/').get(CategoryImageController.getCategoryImages)
-router.route('/:id').get(CategoryImageController.getCategoryImageById)
-router.route('/').post(CategoryImageController.createCategoryImage)
-router.route('/:id').patch(CategoryImageController.updateCategoryImage)
-router.route('/:id').delete(CategoryImageController.deleteCategoryImage)
+router.route('/').get(CategoryImageController.getCategoryImages);
+router.route('/:id').get(CategoryImageController.getCategoryImageById);
+router.route('/').post(CategoryImageController.createCategoryImage);
+router.route('/:id').patch(CategoryImageController.updateCategoryImage);
+router.route('/:id').delete(CategoryImageController.deleteCategoryImage);
 
-export default router
+export default router;

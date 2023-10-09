@@ -1,18 +1,18 @@
 import { Express } from 'express';
 
-import productRouter from '../routes/product';
-import categoryRouter from '../routes/category';
-import productImageRouter from '../routes/productImage';
-import productResourceRouter from '../routes/productResource';
-import manufacturerRouter from '../routes/manufacturer';
-import manufacturerImageRouter from '../routes/manufacturerImage';
-import userRouter from '../routes/user';
-import fileManagerRouter from '../routes/fileManager';
-import categoryImageRouter from '../routes/categoryImage';
-import contactDataRouter from '../routes/contactData';
-import coverImageRouter from '../routes/coverImage';
-import staticPageDataRouter from '../routes/staticPageData';
-import frontendDataRouter from '../routes/frontendData';
+import productRouter from '../routes/product.js';
+import categoryRouter from '../routes/category.js';
+import productImageRouter from '../routes/productImage.js';
+import productResourceRouter from '../routes/productResource.js';
+import manufacturerRouter from '../routes/manufacturer.js';
+import manufacturerImageRouter from '../routes/manufacturerImage.js';
+import userRouter from '../routes/user.js';
+import fileManagerRouter from '../routes/fileManager.js';
+import categoryImageRouter from '../routes/categoryImage.js';
+import contactDataRouter from '../routes/contactData.js';
+import coverImageRouter from '../routes/coverImage.js';
+import staticPageDataRouter from '../routes/staticPageData.js';
+import frontendDataRouter from '../routes/frontendData.js';
 
 export default function (app: Express) {
   app.use('/products', productRouter);

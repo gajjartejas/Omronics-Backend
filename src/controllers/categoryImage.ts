@@ -1,4 +1,4 @@
-import prisma from '../libs/prismaClient';
+import prisma from '../libs/prismaClient.js';
 
 /**
  * POST /CategoryImages
@@ -58,7 +58,7 @@ export const deleteCategoryImage = async (req: any, res: any, next: any) => {
  * GET /CategoryImages
  * Get all CategoryImages
  */
-export const getCategoryImages = async (req: any, res: any, next: any) => {
+export const getCategoryImages = async (_req: any, res: any, next: any) => {
   try {
     const users = await prisma.categoryImage.findMany({
       include: { categories: true },

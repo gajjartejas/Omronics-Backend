@@ -1,17 +1,17 @@
 import { Router } from 'express';
 
-import * as productController from '../controllers/product';
-import * as categoryController from '../controllers/category';
-import * as productImageController from '../controllers/productImage';
-import * as productResourceController from '../controllers/productResource';
-import * as manufacturerController from '../controllers/manufacturer';
-import * as manufacturerImageController from '../controllers/manufacturerImage';
-import * as userController from '../controllers/user';
-import * as fileManagerController from '../controllers/fileManager';
-import * as contactDataController from '../controllers/contactData';
-import * as coverImageController from '../controllers/coverImage';
-import * as staticPageDataController from '../controllers/staticPageData';
-import * as frontendDataController from '../controllers/frontendData';
+import * as productController from '../controllers/product.js';
+import * as categoryController from '../controllers/category.js';
+import * as productImageController from '../controllers/productImage.js';
+import * as productResourceController from '../controllers/productResource.js';
+import * as manufacturerController from '../controllers/manufacturer.js';
+import * as manufacturerImageController from '../controllers/manufacturerImage.js';
+import * as userController from '../controllers/user.js';
+import * as fileManagerController from '../controllers/fileManager.js';
+import * as contactDataController from '../controllers/contactData.js';
+import * as coverImageController from '../controllers/coverImage.js';
+import * as staticPageDataController from '../controllers/staticPageData.js';
+import * as frontendDataController from '../controllers/frontendData.js';
 
 const router = Router();
 
