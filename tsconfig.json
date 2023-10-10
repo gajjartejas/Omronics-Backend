@@ -18,7 +18,7 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
