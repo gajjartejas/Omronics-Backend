@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /CategoryImages
  * Create a new CategoryImages
  */
-export const createCategoryImage = async (req: any, res: any, next: any) => {
+export const createCategoryImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.categoryImage.create({
@@ -20,7 +20,7 @@ export const createCategoryImage = async (req: any, res: any, next: any) => {
  * PATCH /CategoryImages
  * Update single CategoryImages
  */
-export const updateCategoryImage = async (req: any, res: any, next: any) => {
+export const updateCategoryImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateCategoryImage = async (req: any, res: any, next: any) => {
  * DELETE /CategoryImages
  * Delete CategoryImages
  */
-export const deleteCategoryImage = async (req: any, res: any, next: any) => {
+export const deleteCategoryImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.categoryImage.delete({
@@ -58,7 +58,7 @@ export const deleteCategoryImage = async (req: any, res: any, next: any) => {
  * GET /CategoryImages
  * Get all CategoryImages
  */
-export const getCategoryImages = async (_req: any, res: any, next: any) => {
+export const getCategoryImages = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.categoryImage.findMany({
       include: { categories: true },
@@ -73,7 +73,7 @@ export const getCategoryImages = async (_req: any, res: any, next: any) => {
  * GET /CategoryImages/:id
  * Get CategoryImage by id
  */
-export const getCategoryImageById = async (req: any, res: any, next: any) => {
+export const getCategoryImageById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

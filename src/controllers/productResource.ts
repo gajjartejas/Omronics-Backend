@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /productResources
  * Create a new productResources
  */
-export const createProductResource = async (req: any, res: any, next: any) => {
+export const createProductResource = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.productResource.create({
@@ -20,7 +20,7 @@ export const createProductResource = async (req: any, res: any, next: any) => {
  * PATCH /productResources
  * Update single productResources
  */
-export const updateProductResource = async (req: any, res: any, next: any) => {
+export const updateProductResource = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateProductResource = async (req: any, res: any, next: any) => {
  * DELETE /productResources
  * Delete productResources
  */
-export const deleteProductResource = async (req: any, res: any, next: any) => {
+export const deleteProductResource = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.productResource.delete({
@@ -58,7 +58,7 @@ export const deleteProductResource = async (req: any, res: any, next: any) => {
  * GET /productResources
  * Get all productResources
  */
-export const getProductResources = async (_req: any, res: any, next: any) => {
+export const getProductResources = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.productResource.findMany({ include: { products: true } });
     res.json(users);
@@ -71,7 +71,7 @@ export const getProductResources = async (_req: any, res: any, next: any) => {
  * GET /productResources/:id
  * Get productResource by id
  */
-export const getProductResourceById = async (req: any, res: any, next: any) => {
+export const getProductResourceById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

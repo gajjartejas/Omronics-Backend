@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /staticPageData
  * Create a new staticPageData
  */
-export const createStaticPageData = async (req: any, res: any, next: any) => {
+export const createStaticPageData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.staticPageData.create({
@@ -20,7 +20,7 @@ export const createStaticPageData = async (req: any, res: any, next: any) => {
  * PATCH /staticPageData
  * Update single staticPageData
  */
-export const updateStaticPageData = async (req: any, res: any, next: any) => {
+export const updateStaticPageData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateStaticPageData = async (req: any, res: any, next: any) => {
  * DELETE /staticPageData
  * Delete staticPageData
  */
-export const deleteStaticPageData = async (req: any, res: any, next: any) => {
+export const deleteStaticPageData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.staticPageData.delete({
@@ -58,7 +58,7 @@ export const deleteStaticPageData = async (req: any, res: any, next: any) => {
  * GET /getStaticPageDatum
  * Get all static page data
  */
-export const getStaticPageDatum = async (_req: any, res: any, next: any) => {
+export const getStaticPageDatum = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.staticPageData.findMany();
     res.json(users);
@@ -71,7 +71,7 @@ export const getStaticPageDatum = async (_req: any, res: any, next: any) => {
  * GET /staticPageData/:id
  * Get static page data by id
  */
-export const getStaticPageDataById = async (req: any, res: any, next: any) => {
+export const getStaticPageDataById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 
@@ -88,7 +88,7 @@ export const getStaticPageDataById = async (req: any, res: any, next: any) => {
  * GET /getStaticPageDatumByIds
  * Get static page data by ids
  */
-export const getStaticPageDatumByIds = async (req: any, res: any, next: any) => {
+export const getStaticPageDatumByIds = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
 
@@ -109,7 +109,7 @@ export const getStaticPageDatumByIds = async (req: any, res: any, next: any) => 
  * POST /staticPageDatum
  * Update datum
  */
-export const updateStaticPageDatum = async (req: any, res: any, next: any) => {
+export const updateStaticPageDatum = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
 

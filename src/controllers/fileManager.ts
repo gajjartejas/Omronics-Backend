@@ -7,7 +7,7 @@ const ROOT_FOLDER = '/Users/tejas/Desktop/uploads';
  * POST /uploadFile
  * Upload file
  */
-export const uploadFile = async (req: any, res: any, next: any) => {
+export const uploadFile = async (req: any, res: any, next: any): Promise<void> => {
   console.log('req.files', JSON.stringify(!req.files.image));
 
   try {
@@ -31,8 +31,8 @@ export const uploadFile = async (req: any, res: any, next: any) => {
       folder = '/resources/';
     }
 
-    let uploadPath = __dirname + '/' + sampleFile.name;
-    let fileExt = sampleFile.name
+    const uploadPath = __dirname + '/' + sampleFile.name;
+    const fileExt = sampleFile.name
       .split('.')
       .filter(Boolean) // removes empty extensions (e.g. `filename...txt`)
       .slice(1)
@@ -55,7 +55,7 @@ export const uploadFile = async (req: any, res: any, next: any) => {
  * DELETE /deleteFile
  * Delete file
  */
-export const deleteFile = async (req: any, res: any, next: any) => {
+export const deleteFile = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     if (!id) {
