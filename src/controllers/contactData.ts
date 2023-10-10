@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /contactDatum
  * Create a new contactDatum
  */
-export const createContactData = async (req: any, res: any, next: any) => {
+export const createContactData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.contactData.create({
@@ -20,7 +20,7 @@ export const createContactData = async (req: any, res: any, next: any) => {
  * PATCH /contactDatum
  * Update single contactDatum
  */
-export const updateContactData = async (req: any, res: any, next: any) => {
+export const updateContactData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateContactData = async (req: any, res: any, next: any) => {
  * DELETE /contactDatum
  * Delete contactDatum
  */
-export const deleteContactData = async (req: any, res: any, next: any) => {
+export const deleteContactData = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.contactData.delete({
@@ -58,7 +58,7 @@ export const deleteContactData = async (req: any, res: any, next: any) => {
  * POST /deleteContactDatum
  * Delete contactDatum
  */
-export const deleteContactDatum = async (req: any, res: any, next: any) => {
+export const deleteContactDatum = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.contactData.deleteMany({
@@ -78,7 +78,7 @@ export const deleteContactDatum = async (req: any, res: any, next: any) => {
  * GET /contactDatum
  * Get all contactDatum
  */
-export const getContactDatum = async (_req: any, res: any, next: any) => {
+export const getContactDatum = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.contactData.findMany({});
     res.json(users);
@@ -91,7 +91,7 @@ export const getContactDatum = async (_req: any, res: any, next: any) => {
  * GET /contactDatum/:id
  * Get contactData by id
  */
-export const getContactDataById = async (req: any, res: any, next: any) => {
+export const getContactDataById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

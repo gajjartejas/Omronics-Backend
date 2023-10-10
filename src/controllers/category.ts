@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /categories
  * Create a new categories
  */
-export const createCategory = async (req: any, res: any, next: any) => {
+export const createCategory = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.category.create({
@@ -20,7 +20,7 @@ export const createCategory = async (req: any, res: any, next: any) => {
  * PATCH /categories
  * Update single categories
  */
-export const updateCategory = async (req: any, res: any, next: any) => {
+export const updateCategory = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateCategory = async (req: any, res: any, next: any) => {
  * DELETE /categories
  * Delete categories
  */
-export const deleteCategory = async (req: any, res: any, next: any) => {
+export const deleteCategory = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.category.delete({
@@ -58,7 +58,7 @@ export const deleteCategory = async (req: any, res: any, next: any) => {
  * POST /deleteCategories
  * Delete categories
  */
-export const deleteCategories = async (req: any, res: any, next: any) => {
+export const deleteCategories = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.category.deleteMany({
@@ -78,7 +78,7 @@ export const deleteCategories = async (req: any, res: any, next: any) => {
  * GET /categories
  * Get all categories
  */
-export const getCategories = async (_req: any, res: any, next: any) => {
+export const getCategories = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.category.findMany({
       include: {
@@ -95,7 +95,7 @@ export const getCategories = async (_req: any, res: any, next: any) => {
  * GET /categories/:id
  * Get category by id
  */
-export const getCategoryById = async (req: any, res: any, next: any) => {
+export const getCategoryById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const post = await prisma.category.findUnique({
@@ -114,7 +114,7 @@ export const getCategoryById = async (req: any, res: any, next: any) => {
  * GET /childCategories/:id
  * Get category by id
  */
-export const getChildCategoriesById = async (req: any, res: any, next: any) => {
+export const getChildCategoriesById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const post = await prisma.category.findMany({
@@ -134,7 +134,7 @@ export const getChildCategoriesById = async (req: any, res: any, next: any) => {
  * GET /:id/products
  * Get category by id
  */
-export const getProductsByCategoryId = async (req: any, res: any, next: any) => {
+export const getProductsByCategoryId = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const post = await prisma.category.findUnique({
@@ -158,7 +158,7 @@ export const getProductsByCategoryId = async (req: any, res: any, next: any) => 
  * POST /addFeaturedCategories
  * Add Featured Categories
  */
-export const addFeaturedCategories = async (req: any, res: any, next: any) => {
+export const addFeaturedCategories = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.category.updateMany({
@@ -181,7 +181,7 @@ export const addFeaturedCategories = async (req: any, res: any, next: any) => {
  * POST /removeFeaturedProducts
  * Remove Featured Categories
  */
-export const removeFeaturedCategories = async (req: any, res: any, next: any) => {
+export const removeFeaturedCategories = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.category.updateMany({

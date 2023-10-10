@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /productImages
  * Create a new productImages
  */
-export const createProductImage = async (req: any, res: any, next: any) => {
+export const createProductImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.productImage.create({
@@ -20,7 +20,7 @@ export const createProductImage = async (req: any, res: any, next: any) => {
  * PATCH /productImages
  * Update single productImages
  */
-export const updateProductImage = async (req: any, res: any, next: any) => {
+export const updateProductImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateProductImage = async (req: any, res: any, next: any) => {
  * DELETE /productImages
  * Delete productImages
  */
-export const deleteProductImage = async (req: any, res: any, next: any) => {
+export const deleteProductImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.productImage.delete({
@@ -58,7 +58,7 @@ export const deleteProductImage = async (req: any, res: any, next: any) => {
  * GET /productImages
  * Get all productImages
  */
-export const getProductImages = async (_req: any, res: any, next: any) => {
+export const getProductImages = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.productImage.findMany({
       include: { products: true },
@@ -73,7 +73,7 @@ export const getProductImages = async (_req: any, res: any, next: any) => {
  * GET /productImages/:id
  * Get productImage by id
  */
-export const getProductImageById = async (req: any, res: any, next: any) => {
+export const getProductImageById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

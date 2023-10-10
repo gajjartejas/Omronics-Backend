@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /ManufacturerImages
  * Create a new ManufacturerImages
  */
-export const createManufacturerImage = async (req: any, res: any, next: any) => {
+export const createManufacturerImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.manufacturerImage.create({
@@ -20,7 +20,7 @@ export const createManufacturerImage = async (req: any, res: any, next: any) => 
  * PATCH /ManufacturerImages
  * Update single ManufacturerImages
  */
-export const updateManufacturerImage = async (req: any, res: any, next: any) => {
+export const updateManufacturerImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateManufacturerImage = async (req: any, res: any, next: any) => 
  * DELETE /ManufacturerImages
  * Delete ManufacturerImages
  */
-export const deleteManufacturerImage = async (req: any, res: any, next: any) => {
+export const deleteManufacturerImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.manufacturerImage.delete({
@@ -58,7 +58,7 @@ export const deleteManufacturerImage = async (req: any, res: any, next: any) => 
  * GET /ManufacturerImages
  * Get all ManufacturerImages
  */
-export const getManufacturerImages = async (_req: any, res: any, next: any) => {
+export const getManufacturerImages = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.manufacturerImage.findMany({
       include: { manufacturers: true },
@@ -73,7 +73,7 @@ export const getManufacturerImages = async (_req: any, res: any, next: any) => {
  * GET /ManufacturerImages/:id
  * Get ManufacturerImage by id
  */
-export const getManufacturerImageById = async (req: any, res: any, next: any) => {
+export const getManufacturerImageById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

@@ -63,7 +63,7 @@ node-express-typescript-starter
 ├─ LICENSE
 ├─ README.md
 ├─ error.log
-├─ jest.config.ts
+├─ jest.config.js
 ├─ package-lock.json
 ├─ package.json
 ├─ src

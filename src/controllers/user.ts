@@ -17,11 +17,11 @@ import jwt from 'jsonwebtoken';
 //
 // }
 // }
-export const createUser = async (req: any, res: any, next: any) => {
+export const createUser = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const { email, password } = data;
-    let userCount = await prisma.user.count({
+    const userCount = await prisma.user.count({
       where: {
         email: email,
       },
@@ -43,7 +43,7 @@ export const createUser = async (req: any, res: any, next: any) => {
  * PATCH /users
  * Update single users
  */
-export const updateUser = async (req: any, res: any, next: any) => {
+export const updateUser = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -63,7 +63,7 @@ export const updateUser = async (req: any, res: any, next: any) => {
  * DELETE /users
  * Delete users
  */
-export const deleteUser = async (req: any, res: any, next: any) => {
+export const deleteUser = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.user.delete({
@@ -81,7 +81,7 @@ export const deleteUser = async (req: any, res: any, next: any) => {
  * GET /users
  * Get all users
  */
-export const getUsers = async (_req: any, res: any, next: any) => {
+export const getUsers = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.user.findMany({});
     res.json(users);
@@ -94,7 +94,7 @@ export const getUsers = async (_req: any, res: any, next: any) => {
  * GET /users/:id
  * Get user by id
  */
-export const getUserById = async (req: any, res: any, next: any) => {
+export const getUserById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 
@@ -111,7 +111,7 @@ export const getUserById = async (req: any, res: any, next: any) => {
  * POST /login
  * Get user by id
  */
-export const login = async (req: any, res: any, next: any) => {
+export const login = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const { email, password } = data;
@@ -120,7 +120,7 @@ export const login = async (req: any, res: any, next: any) => {
     if (!(email && password)) {
       return res.status(400).send('All input is required');
     }
-    let user = await prisma.user.findFirst({
+    const user = await prisma.user.findFirst({
       where: {
         email: email,
       },

@@ -14,7 +14,7 @@ import coverImageRouter from '../routes/coverImage.js';
 import staticPageDataRouter from '../routes/staticPageData.js';
 import frontendDataRouter from '../routes/frontendData.js';
 
-export default function (app: Express) {
+export default function (app: Express): void {
   app.use('/products', productRouter);
   app.use('/categories', categoryRouter);
   app.use('/productImages', productImageRouter);

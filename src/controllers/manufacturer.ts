@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /manufacturers
  * Create a new manufacturers
  */
-export const createManufacturer = async (req: any, res: any, next: any) => {
+export const createManufacturer = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.manufacturer.create({
@@ -20,7 +20,7 @@ export const createManufacturer = async (req: any, res: any, next: any) => {
  * PATCH /manufacturers
  * Update single manufacturers
  */
-export const updateManufacturer = async (req: any, res: any, next: any) => {
+export const updateManufacturer = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateManufacturer = async (req: any, res: any, next: any) => {
  * DELETE /manufacturers
  * Delete manufacturers
  */
-export const deleteManufacturer = async (req: any, res: any, next: any) => {
+export const deleteManufacturer = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.manufacturer.delete({
@@ -58,7 +58,7 @@ export const deleteManufacturer = async (req: any, res: any, next: any) => {
  * POST /manufacturers
  * Delete manufacturers
  */
-export const deleteManufacturers = async (req: any, res: any, next: any) => {
+export const deleteManufacturers = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.manufacturer.deleteMany({
@@ -78,7 +78,7 @@ export const deleteManufacturers = async (req: any, res: any, next: any) => {
  * GET /manufacturers
  * Get all manufacturers
  */
-export const getManufacturers = async (_req: any, res: any, next: any) => {
+export const getManufacturers = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.manufacturer.findMany({
       include: {
@@ -95,7 +95,7 @@ export const getManufacturers = async (_req: any, res: any, next: any) => {
  * GET /manufacturers/:id
  * Get manufacturer by id
  */
-export const getManufacturerById = async (req: any, res: any, next: any) => {
+export const getManufacturerById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 
@@ -115,7 +115,7 @@ export const getManufacturerById = async (req: any, res: any, next: any) => {
  * POST /addFeaturedManufacturers
  * Add Featured Manufacturers
  */
-export const addFeaturedManufacturers = async (req: any, res: any, next: any) => {
+export const addFeaturedManufacturers = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.manufacturer.updateMany({
@@ -138,7 +138,7 @@ export const addFeaturedManufacturers = async (req: any, res: any, next: any) =>
  * POST /removeFeaturedManufacturers
  * Remove Featured Manufacturers
  */
-export const removeFeaturedManufacturers = async (req: any, res: any, next: any) => {
+export const removeFeaturedManufacturers = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.manufacturer.updateMany({
@@ -161,7 +161,7 @@ export const removeFeaturedManufacturers = async (req: any, res: any, next: any)
  * GET /getProductsByManufacturerId/:id
  * Get getProductsByManufacturerId by id
  */
-export const getProductsByManufacturerId = async (req: any, res: any, next: any) => {
+export const getProductsByManufacturerId = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 

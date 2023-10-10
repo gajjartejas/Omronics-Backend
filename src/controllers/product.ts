@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /products
  * Create a new product
  */
-export const createProduct = async (req: any, res: any, next: any) => {
+export const createProduct = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.product.create({
@@ -20,7 +20,7 @@ export const createProduct = async (req: any, res: any, next: any) => {
  * PATCH /products
  * Update single product
  */
-export const updateProduct = async (req: any, res: any, next: any) => {
+export const updateProduct = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateProduct = async (req: any, res: any, next: any) => {
  * DELETE /products
  * Delete product
  */
-export const deleteProduct = async (req: any, res: any, next: any) => {
+export const deleteProduct = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.product.delete({
@@ -58,7 +58,7 @@ export const deleteProduct = async (req: any, res: any, next: any) => {
  * POST /deleteProducts
  * Delete products
  */
-export const deleteProducts = async (req: any, res: any, next: any) => {
+export const deleteProducts = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.product.deleteMany({
@@ -78,7 +78,7 @@ export const deleteProducts = async (req: any, res: any, next: any) => {
  * GET /products
  * Get all products
  */
-export const getProducts = async (_req: any, res: any, next: any) => {
+export const getProducts = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.product.findMany({
       include: {
@@ -98,7 +98,7 @@ export const getProducts = async (_req: any, res: any, next: any) => {
  * GET /products/:id
  * Get product by id
  */
-export const getProductById = async (req: any, res: any, next: any) => {
+export const getProductById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 
@@ -121,7 +121,7 @@ export const getProductById = async (req: any, res: any, next: any) => {
  * POST /addFeaturedProducts
  * Add Featured Products
  */
-export const addFeaturedProducts = async (req: any, res: any, next: any) => {
+export const addFeaturedProducts = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.product.updateMany({
@@ -144,7 +144,7 @@ export const addFeaturedProducts = async (req: any, res: any, next: any) => {
  * POST /removeFeaturedProducts
  * Remove Featured Products
  */
-export const removeFeaturedProducts = async (req: any, res: any, next: any) => {
+export const removeFeaturedProducts = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.product.updateMany({

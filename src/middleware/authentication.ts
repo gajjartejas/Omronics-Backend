@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-function authenticateToken(req: any, res: any, next: any) {
+function authenticateToken(req: any, res: any, next: any): void {
   //return next();
   console.log('req.method', req.method);
   console.log('req.method', req.path);

@@ -4,7 +4,7 @@ import prisma from '../libs/prismaClient.js';
  * POST /coverImages
  * Create a new coverImages
  */
-export const createCoverImage = async (req: any, res: any, next: any) => {
+export const createCoverImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.coverImage.create({
@@ -20,7 +20,7 @@ export const createCoverImage = async (req: any, res: any, next: any) => {
  * PATCH /coverImages
  * Update single coverImages
  */
-export const updateCoverImage = async (req: any, res: any, next: any) => {
+export const updateCoverImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const { data } = req.body;
@@ -40,7 +40,7 @@ export const updateCoverImage = async (req: any, res: any, next: any) => {
  * DELETE /coverImages
  * Delete coverImages
  */
-export const deleteCoverImage = async (req: any, res: any, next: any) => {
+export const deleteCoverImage = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
     const result = await prisma.coverImage.delete({
@@ -58,7 +58,7 @@ export const deleteCoverImage = async (req: any, res: any, next: any) => {
  * POST /deleteCoverImages
  * Delete coverImages
  */
-export const deleteCoverImages = async (req: any, res: any, next: any) => {
+export const deleteCoverImages = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { data } = req.body;
     const result = await prisma.coverImage.deleteMany({
@@ -78,7 +78,7 @@ export const deleteCoverImages = async (req: any, res: any, next: any) => {
  * GET /coverImage
  * Get all coverImages
  */
-export const getCoverImages = async (_req: any, res: any, next: any) => {
+export const getCoverImages = async (_req: any, res: any, next: any): Promise<void> => {
   try {
     const users = await prisma.coverImage.findMany({});
     res.json(users);
@@ -91,7 +91,7 @@ export const getCoverImages = async (_req: any, res: any, next: any) => {
  * GET /coverImages/:id
  * Get coverImage by id
  */
-export const getCoverImageById = async (req: any, res: any, next: any) => {
+export const getCoverImageById = async (req: any, res: any, next: any): Promise<void> => {
   try {
     const { id }: { id?: string } = req.params;
 
