@@ -9,9 +9,12 @@ import fileUpload from 'express-fileupload';
 import * as config from './src/config/index.js';
 import AppMiddleware from './src/middleware/index.js';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
-const FRONT_END_URL = env === 'production' ? '*' : 'http://localhost:3000';
+const FRONT_END_URL = env === 'production' ? 'https://omronics.com' : 'http://localhost:3000';
+
+console.log('APP PORT IS', port);
+console.log('APP ENV IS', env);
 
 const app = express();
 app.use(express.json());
