@@ -27,13 +27,13 @@ app.use(
     parseNested: true,
   }),
 );
-
+/*
 app.use(cors({ credentials: true, origin: FRONT_END_URL }));
 app.use(function (_req, res, next) {
   res.header('Access-Control-Allow-Origin', FRONT_END_URL);
   next();
 });
-
+*/
 // Custom middleware list
 app.use(AppMiddleware.authenticationMiddleware);
 
