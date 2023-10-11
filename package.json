@@ -12,7 +12,7 @@
     "start": "node dist/index.js",
     "start:prod": "node dist/index.js",
     "dev": "npm run build && concurrently -k \"tsc -w\" \"nodemon dist/index.js\"",
-    "build": "npm i && prisma generate && npx tsc -p .",
+    "build": "rm -rf dist && npm i && prisma generate && npx tsc -p .",
     "test": "npm run build && jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
