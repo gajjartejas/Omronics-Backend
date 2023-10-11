@@ -9,7 +9,7 @@ import fileUpload from 'express-fileupload';
 import * as config from './src/config/index.js';
 import AppMiddleware from './src/middleware/index.js';
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT;
 const env = process.env.NODE_ENV || 'development';
 const FRONT_END_URL = env === 'production' ? '*' : 'http://localhost:3000';
 
@@ -27,13 +27,13 @@ app.use(
     parseNested: true,
   }),
 );
-/*
+
 app.use(cors({ credentials: true, origin: FRONT_END_URL }));
 app.use(function (_req, res, next) {
   res.header('Access-Control-Allow-Origin', FRONT_END_URL);
   next();
 });
-*/
+
 // Custom middleware list
 app.use(AppMiddleware.authenticationMiddleware);
 
