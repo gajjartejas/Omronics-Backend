@@ -9,7 +9,7 @@ import fileUpload from 'express-fileupload';
 import * as config from './src/config/index.js';
 import AppMiddleware from './src/middleware/index.js';
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
 const FRONT_END_URL = env === 'production' ? 'https://omronics.com' : 'http://localhost:80';
 
@@ -17,6 +17,8 @@ console.log('APP PORT IS', port);
 console.log('APP ENV IS', env);
 
 const app = express();
+app.listen(port, () => console.log(`Started at Port:${port}`));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -43,6 +45,6 @@ app.use(AppMiddleware.authenticationMiddleware);
 // Load router paths
 config.routerConfig(app);
 
-app.listen(port, () => console.log(`Started at Port:${port}`));
+
 
 export default app;
