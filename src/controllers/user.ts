@@ -126,7 +126,7 @@ export const login = async (req: any, res: any, next: any): Promise<void> => {
       },
     });
     // 3hrs in sec
-    const maxAge = 3 * 60 * 60;
+    const maxAge = 30 * 24 * 60 * 60;
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
