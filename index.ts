@@ -33,7 +33,7 @@ app.use(
   }),
 );
 
-app.use(cors({ credentials: true, origin: FRONT_END_URL, optionsSuccessStatus: 200 }));
+app.use(cors({ credentials: true, origin: FRONT_END_URL, optionsSuccessStatus: 200, allowedHeaders: true }));
 
 // Custom middleware list
 app.use(AppMiddleware.authenticationMiddleware);
