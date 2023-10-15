@@ -33,18 +33,12 @@ app.use(
   }),
 );
 
-app.use(cors({ credentials: true, origin: FRONT_END_URL }));
-app.use(function (_req, res, next) {
-  res.header('Access-Control-Allow-Origin', FRONT_END_URL);
-  next();
-});
+app.use(cors({ credentials: true, origin: FRONT_END_URL, optionsSuccessStatus: 200 }));
 
 // Custom middleware list
 app.use(AppMiddleware.authenticationMiddleware);
 
 // Load router paths
 config.routerConfig(app);
-
-
 
 export default app;
