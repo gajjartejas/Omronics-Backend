@@ -135,8 +135,8 @@ export const login = async (req: any, res: any, next: any): Promise<void> => {
       });
 
       res.cookie('jwt', token, {
-        httpOnly: false,
-        maxAge: maxAge * 1000, // 3hrs in ms
+        secure: true,
+        maxAge: maxAge * 1000, // 3hrs in ms23231211123
       });
 
       // user
