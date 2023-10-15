@@ -126,7 +126,7 @@ export const login = async (req: any, res: any, next: any): Promise<void> => {
       },
     });
     // 3hrs in sec
-    const maxAge = 30 * 24 * 60 * 60;
+    const maxAge = 30 * 24 * 60 * 60 * 1000;
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
@@ -135,8 +135,9 @@ export const login = async (req: any, res: any, next: any): Promise<void> => {
       });
 
       res.cookie('jwt', token, {
+        sameSite: 'none',
         secure: true,
-        maxAge: maxAge * 1000, // 3hrs in ms23231211123
+        maxAge: maxAge,
       });
 
       // user
